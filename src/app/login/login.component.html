@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<div class = "container">
+	<div class="wrapper">
+		<form #formData='ngForm' (ngSubmit)="login()" action=""  name="Login_Form" class="form-signin">
+		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+			  <hr class="colorgraph"><br>
+				<div *ngIf="message" class="alert alert-warning box-msg fade in" role="alert">
+        	Error al iniciar sesión. Intente nuevamente
+				</div>
+			  <input type="text" class="form-control" name="Email" [(ngModel)]="user.email" placeholder="Email" required="" autofocus="" />
+				<input type="password" class="form-control" name="Password" [(ngModel)]="user.password" placeholder="Password" required=""/>
+
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>
+        <br>
+        <a routerLink="/signup" routerLinkActive="active" class="alc">No account ? <strong> create an account now ! </strong></a>
+		</form>
+	</div>
+</div>

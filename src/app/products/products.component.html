@@ -1,0 +1,10 @@
+<app-navigation></app-navigation>
+<br>
+<br>
+<p>
+  products works!
+</p>
+<div *ngIf="!currentUser">Hola no estás loggeado</div>
+<div *ngIf="currentUser">Estás loggeado como {{currentUser.name}}</div>
+<button (click)='getProducts()'>Traer products</button>
+{{ products | json}}
