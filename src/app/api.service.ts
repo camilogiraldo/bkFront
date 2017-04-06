@@ -3,25 +3,66 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Product } from '../app/model/product';
 import {Observable} from 'rxjs/Rx';
 
-
-
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
+import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class ApiService {
 
+  loggedIn: Boolean;
+  private currentUser: {};
+
   constructor(private http: Http) { }
 
   private apiUrl = 'https://stage-bkbackend.herokuapp.com'
+  jwtHelper: JwtHelper = new JwtHelper();
+
+  isLoggedIn() {
+    if (this.getSessionData()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getSessionData(){
+    if(localStorage.getItem('currentUser')) {
+      this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token);
+      return this.currentUser
+    } else {
+      return null;
+    }
+  }
+
+  getSessionToken(){
+    if(localStorage.getItem('currentUser')) {
+      return JSON.parse(localStorage.getItem('currentUser')).token;
+    }else {
+      return null
+    }
+  }
 
   getProducts() {
     return this.http.get(this.apiUrl + '/products')
             .map((res:Response) => res.json())
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
   }
+
+  getMemberInfo(token: Object) {
+
+    let headers = new Headers({ 'Content-type': 'application/json' });
+    headers.append('Authorization',  token.toString());
+    let options = new RequestOptions({ headers: headers })
+    console.log(token)
+
+    return this.http.get( this.apiUrl + '/api/memberinfo', options)
+      .map((res: Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json() || 'Server error'))
+
+  }
+
   signupUser(user: Object) {
     let bodyString = JSON.stringify(user);
     let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
@@ -47,7 +88,7 @@ export class ApiService {
           console.log(res);
           return res.json();
         })
-
         .catch((error:any) => Observable.throw(error.json() || 'Server error'))
-      }
+  }
+
 }

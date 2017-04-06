@@ -9,7 +9,9 @@ import { SignupComponent } from './signup/signup.component';
 import { ApiService } from './api.service';
 import { ProductsComponent } from './products/products.component'
 import { AppRoutes } from './app.routes';
-import { NavigationComponent } from './navigation/navigation.component'
+import { NavigationComponent } from './navigation/navigation.component';
+import { MemberComponent } from './member/member.component'
+import { AuthGuard } from './auth-guard.service'
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { NavigationComponent } from './navigation/navigation.component'
     LoginComponent,
     SignupComponent,
     ProductsComponent,
-    NavigationComponent
+    NavigationComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { NavigationComponent } from './navigation/navigation.component'
     HttpModule,
     AppRoutes,
   ],
-  providers: [ ApiService ],
+  providers: [ ApiService, AuthGuard ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
