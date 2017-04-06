@@ -1,3 +1,4 @@
+
 <div class="navbar-wrapper">
     <div class="container-fluid">
         <nav class="navbar navbar-fixed-top">
@@ -13,17 +14,18 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#" class="">Home</a></li>
+                        <li class="active"><a routerLink="/" routerLinkActive="active" class="">Home</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li *ngIf="!loggedIn"><a  routerLink="/login" class="alc">Login</a></li>
+                        <li *ngIf="!loggedIn"><a routerLink="/login" class="alc">Login</a></li>
+                        <li *ngIf="!loggedIn"><a routerLink="/signup" class="alc">Signup</a></li>
                         <li  *ngIf="loggedIn" class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as {{ currentUser.name }}  <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Change Password</a></li>
                                 <li><a href="#">My Profile</a></li>
                             </ul>
                         </li>
-                        <li *ngIf="loggedIn" class=""><a href="#" (click)="logout()">Logout</a></li>
+                        <li *ngIf="loggedIn" class=""><a href="" (click)="logout()">Logout</a></li>
                     </ul>
                 </div>
             </div>
