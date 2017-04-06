@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "heroku-prebuild": "npm install -g http-server",
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "ng build",
     "start": "http-server dist/"
 
   },
@@ -27,7 +27,8 @@
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "typescript": "~2.0.0"
+    "typescript": "~2.0.0",
+    "ts-node": "~2.0.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.2",
