@@ -23,7 +23,7 @@ import { NavigationComponent } from './navigation/navigation.component'
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutes
+    AppRoutes,
   ],
   providers: [ ApiService ],
   bootstrap: [ AppComponent ]

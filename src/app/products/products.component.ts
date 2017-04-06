@@ -16,6 +16,8 @@ export class ProductsComponent implements OnInit {
   private currentUser = {};
   private decodedTokenExp = {};
   private decodedTokenIsExp = {};
+  private isLogged: Boolean;
+
   constructor(private api: ApiService) {
     this.getSessionData()
   }
@@ -23,11 +25,13 @@ export class ProductsComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
 
   getSessionData(){
-    if(this.currentUser){
+    if(localStorage.getItem('currentUser')){
       this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token) ;
       this.decodedTokenExp = this.jwtHelper.getTokenExpirationDate(JSON.parse(localStorage.getItem('currentUser')).token);
       this.decodedTokenIsExp = this.jwtHelper.isTokenExpired(JSON.parse(localStorage.getItem('currentUser')).token);
-      console.log(this.currentUser)
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
     }
 
   }

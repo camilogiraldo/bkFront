@@ -14,25 +14,16 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#" class="">Home</a></li>
-                        <li class=" dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departments <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class=" dropdown">
-                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Departments</a>
-                                </li>
-                                <li><a href="#">Add New</a></li>
-                            </ul>
-                        </li>
-                      </ul>
+                    </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li [hidden]="currentUser"><a routerLink="/login" routerLinkActive="active">Login</a></li>
-                        <li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as   <span class="caret"></span></a>
+                        <li *ngIf="!loggedIn"><a  routerLink="/login" class="alc">Login</a></li>
+                        <li  *ngIf="loggedIn" class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as {{ currentUser.name }}  <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Change Password</a></li>
                                 <li><a href="#">My Profile</a></li>
                             </ul>
                         </li>
-                        <li class=""><a  routerLink="/" routerLinkActive="active" (click)='logout()'>Logout</a></li>
+                        <li *ngIf="loggedIn" class=""><a href="#" (click)="logout()">Logout</a></li>
                     </ul>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 <p>
   products works!
 </p>
-<div *ngIf="!currentUser">Hola no estás loggeado</div>
-<div *ngIf="currentUser">Estás loggeado como {{currentUser.name}}</div>
+<div *ngIf="!isLogged">Hola no estás loggeado</div>
+<div *ngIf="isLogged">Estás loggeado como {{currentUser.name}}</div>
 <button (click)='getProducts()'>Traer products</button>
 {{ products | json}}

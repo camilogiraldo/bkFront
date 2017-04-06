@@ -37,9 +37,9 @@ export class SignupComponent implements OnInit {
             // TODO: backend change. for get the JWT after signup or a verification email
               this.message = 'Registro exitoso. redirecting yoy'
               setTimeout(function(){
-
+              
                 this.router.navigate(['/products'])
-              }.bind(this), 6000)
+              }.bind(this), 2000)
 
           }
         }
