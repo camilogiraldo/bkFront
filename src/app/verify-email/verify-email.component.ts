@@ -12,8 +12,8 @@ export class VerifyEmailComponent implements OnInit {
   constructor(private api: ApiService, private route: ActivatedRoute, private  router: Router) { }
 
   private token;
-  private response;
-
+  private response = {};
+  private message;
   ngOnInit() {
     this.verifyEmail();
   }
@@ -23,7 +23,23 @@ export class VerifyEmailComponent implements OnInit {
       .queryParams
       .subscribe(params => this.token = params['token'])
     this.api.verifyEmail(this.token)
-      .subscribe(data => this.response = data)
-    this.router.navigate(['/'])
+      .subscribe(data => {
+        this.response = data;
+        if (!this.response) {
+          this.router.navigate(['/login'])
+        }  else {
+          if(data.success == false) {
+            this.message = 'Login failed. Try again';
+            setTimeout(function(){
+              this.message = '';
+            }.bind(this) , 6000)
+            console.log('bad response')
+          } else {
+            this.token = data.token;
+            localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
+            this.router.navigate(['/products'])
+          }
+        }
+      }, err => console.log(err))
   }
 }

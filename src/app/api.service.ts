@@ -17,6 +17,7 @@ export class ApiService {
   constructor(private http: Http) { }
 
   private apiUrl = 'https://stage-bkbackend.herokuapp.com'
+
   jwtHelper: JwtHelper = new JwtHelper();
 
   isLoggedIn() {
@@ -47,7 +48,7 @@ export class ApiService {
   getProducts() {
     return this.http.get(this.apiUrl + '/products')
             .map((res:Response) => res.json())
-            .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+            .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   getMemberInfo(token: Object) {
@@ -59,7 +60,7 @@ export class ApiService {
 
     return this.http.get( this.apiUrl + '/api/memberinfo', options)
       .map((res: Response) => res.json())
-      .catch((error:any) => Observable.throw(error.json() || 'Server error'))
+      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
 
   }
 
@@ -68,14 +69,14 @@ export class ApiService {
     let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers})
 
-    return this.http.post('http://localhost:3000/api/signup', user, options )
+    return this.http.post(this.apiUrl + '/api/signup', user, options )
         .map((res: Response) => {
 
           console.log(res);
           console.log(bodyString);
           return res.json();
         })
-        .catch((error:any) => Observable.throw(error.json() || 'Server error'))
+        .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   loginUser(body: Object) {
@@ -88,13 +89,13 @@ export class ApiService {
           console.log(res);
           return res.json();
         })
-        .catch((error:any) => Observable.throw(error.json() || 'Server error'))
+        .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   verifyEmail (params: String){
-    return this.http.get( this.apiUrl + '/api/verify_email?token=' + params)
-      .map((res: Response) => res.json())
-      .catch((error:any) => Observable.throw(error.json() || 'Server error'))
+    return this.http.get(this.apiUrl + '/api/verify_email?token=' + params.toString())
+      .map((res: Response) => res.json() )
+      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
 }
