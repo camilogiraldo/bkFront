@@ -11,7 +11,8 @@ import { ProductsComponent } from './products/products.component'
 import { AppRoutes } from './app.routes';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MemberComponent } from './member/member.component'
-import { AuthGuard } from './auth-guard.service'
+import { AuthGuard } from './auth-guard.service';
+import { VerifyEmailComponent } from './verify-email/verify-email.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthGuard } from './auth-guard.service'
     SignupComponent,
     ProductsComponent,
     NavigationComponent,
-    MemberComponent
+    MemberComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
