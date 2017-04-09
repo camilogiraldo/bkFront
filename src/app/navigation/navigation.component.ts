@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
+import { ApiService } from '../api.service'
 
 @Component({
   selector: 'app-navigation',
@@ -12,18 +13,14 @@ export class NavigationComponent implements OnInit {
 
   loggedIn: Boolean;
   currentUser: {};
-  constructor(private router: Router) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   jwtHelper: JwtHelper = new JwtHelper();
 
   ngOnInit() {
-// TODO: look for a better implementation. Code reuse
-    if(localStorage.getItem('currentUser')) {
-      this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token) ;
-      this.loggedIn = true;
-    } else {
-      this.loggedIn = false;
-    }
+    this.currentUser = this.api.getSessionData()
+    this.loggedIn = this.api.isLoggedIn();
+
   }
 
 

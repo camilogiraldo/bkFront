@@ -27,7 +27,7 @@ export class ApiService {
       return false;
     }
   }
-
+  //return the decoded information from token
   getSessionData(){
     if(localStorage.getItem('currentUser')) {
       this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token);
@@ -37,6 +37,7 @@ export class ApiService {
     }
   }
 
+  //Returns the token for the currentUser
   getSessionToken(){
     if(localStorage.getItem('currentUser')) {
       return JSON.parse(localStorage.getItem('currentUser')).token;
@@ -52,16 +53,13 @@ export class ApiService {
   }
 
   getMemberInfo(token: Object) {
-
     let headers = new Headers({ 'Content-type': 'application/json' });
     headers.append('Authorization',  token.toString());
     let options = new RequestOptions({ headers: headers })
-    console.log(token)
 
     return this.http.get( this.apiUrl + '/api/memberinfo', options)
       .map((res: Response) => res.json())
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
-
   }
 
   signupUser(user: Object) {
@@ -72,8 +70,6 @@ export class ApiService {
     return this.http.post(this.apiUrl + '/api/signup', user, options )
         .map((res: Response) => {
 
-          console.log(res);
-          console.log(bodyString);
           return res.json();
         })
         .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
@@ -86,7 +82,6 @@ export class ApiService {
 
     return this.http.post(this.apiUrl + '/api/authenticate', bodyString, options )
         .map((res: Response) => {
-          console.log(res);
           return res.json();
         })
         .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))

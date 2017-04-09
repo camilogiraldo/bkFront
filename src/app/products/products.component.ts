@@ -16,27 +16,17 @@ export class ProductsComponent implements OnInit {
   private currentUser = {};
   private decodedTokenExp = {};
   private decodedTokenIsExp = {};
-  private isLogged: Boolean;
+  private isLogged;
+  private products = {};
 
   constructor(private api: ApiService) {
-    this.getSessionData()
+      this.currentUser = this.api.getSessionData()
+      this.isLogged = this.api.isLoggedIn();
   }
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  getSessionData(){
-    if(localStorage.getItem('currentUser')){
-      this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token) ;
-      this.decodedTokenExp = this.jwtHelper.getTokenExpirationDate(JSON.parse(localStorage.getItem('currentUser')).token);
-      this.decodedTokenIsExp = this.jwtHelper.isTokenExpired(JSON.parse(localStorage.getItem('currentUser')).token);
-      this.isLogged = true;
-    } else {
-      this.isLogged = false;
-    }
 
-  }
-
-  products = {};
 
   ngOnInit() {
     this.getProducts();
