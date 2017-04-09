@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/login'])
         }  else {
           if(data.success == false) {
-            this.message = 'Login failed. Try again';
+            this.message = data.message;
             setTimeout(function(){
               this.message = '';
             }.bind(this) , 6000)

@@ -5,7 +5,7 @@
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
 			  <hr class="colorgraph"><br>
 				<div *ngIf="message" class="alert alert-warning box-msg fade in" role="alert">
-        	Error al iniciar sesión. Intente nuevamente
+         {{ message }}
 				</div>
 			  <input type="text" class="form-control" name="Email" [(ngModel)]="user.email" placeholder="Email" required="" autofocus="" />
 				<input type="password" class="form-control" name="Password" [(ngModel)]="user.password" placeholder="Password" required=""/>

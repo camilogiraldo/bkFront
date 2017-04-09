@@ -35,9 +35,9 @@ export class SignupComponent implements OnInit {
             //registro exitoso
             //redirigir al home or wtvr
             // TODO: backend change. for get the JWT after signup or a verification email
-              this.message = 'Registro exitoso. redirecting yoy'
+              this.message = 'We have sent you a verification email. Check your inbox !'
               setTimeout(function(){
-              
+
                 this.router.navigate(['/products'])
               }.bind(this), 2000)
 
