@@ -12,7 +12,8 @@ import { AppRoutes } from './app.routes';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MemberComponent } from './member/member.component'
 import { AuthGuard } from './auth-guard.service';
-import { VerifyEmailComponent } from './verify-email/verify-email.component'
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component'
     ProductsComponent,
     NavigationComponent,
     MemberComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

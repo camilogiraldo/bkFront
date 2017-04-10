@@ -52,6 +52,13 @@ export class ApiService {
             .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
+  getProductByID(id: String) {
+    console.log(id)
+    return this.http.get(this.apiUrl + '/products/' + id)
+      .map((res: Response) => res.json() )
+      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+  }
+
   getMemberInfo(token: Object) {
     let headers = new Headers({ 'Content-type': 'application/json' });
     headers.append('Authorization',  token.toString());
