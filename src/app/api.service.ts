@@ -97,10 +97,11 @@ export class ApiService {
   }
 
   createProduct(body: Object){
-
+    let token = this.getSessionToken();
     let bodyString = JSON.stringify(body);
     console.log(bodyString)
     let headers = new Headers({ 'Content-type': 'application/json'})
+    headers.append('Authorization',  token.toString());
     let options = new RequestOptions({ headers: headers })
 
     return this.http.post( this.apiUrl + '/create', bodyString, options)

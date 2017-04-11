@@ -15,9 +15,10 @@
       <h3> {{ product.name  | uppercase}} </h3>
       <img src="http://placehold.it/350x350" alt="">
       <br />
+      <h5><strong> Created by: </strong> {{ product.createdBy }}</h5>
       <p>{{ product.description }}</p>
-      <span> {{ product.type }} </span>
-      <span> {{ product.status }} </span>
-      <span>Price: <strong> {{ product.price }} </strong></span>
+      <span><strong>Product type: </strong> {{ product.type }} </span>
+      <span><strong>Status: </strong> {{ product.status }} </span>
+      <span>Price: <strong>{{ product.price }} </strong></span>
   </div>
 </div>
