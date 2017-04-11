@@ -1,0 +1,75 @@
+<app-navigation></app-navigation>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>
+				Sell your product
+			</h3>
+			<dl>
+				<dt>
+					Description lists
+				</dt>
+				<dd>
+					A description list is perfect for defining terms.
+				</dd>
+
+			</dl>
+			<form role="form" (ngSubmit)="publish()">
+        <div class="form-group">
+          <input [(ngModel)]="product.name" type="text" name="product_name" id="product_name" class="form-control input-lg" placeholder="Product Name" tabindex="1" required="">
+        </div>
+        <div class="form-group">
+          <label for="comment">Product description:</label>
+          <textarea [(ngModel)]="product.description" name="product_description" id="product_description" class="form-control" rows="5" placeholder="Product Description..." required=""></textarea>
+        </div>
+
+          <div class="form-group">
+            <label for="exampleSelect1">Product type</label>
+            <select (change)="onChangeType($event.target.value)" class="form-control" id="exampleSelect1" >
+              <option>Type 1</option>
+              <option>Type 2</option>
+              <option>Type 3</option>
+              <option>Type 4</option>
+              <option>Type 5</option>
+            </select>
+          </div>
+          <fieldset class="form-group">
+          <legend>Product status</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="new" checked="">
+              New
+              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="used">
+              Used
+            </label>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <input [(ngModel)]="product.price" type="number" name="product_price" id="product_price" class="form-control input-md col-md-4" placeholder="Price" tabindex="1" required>
+        </div>
+        <br>
+        <br>
+				<div class="form-group">
+					<label for="exampleInputFile">
+						Images
+					</label>
+					<input (change)="onChangeFiles($event)" type="file" id="exampleInputFile" multiple  required=""/>
+					<p class="help-block">
+						Be sure to provide appropiate photos for your product.
+					</p>
+          <ul class="list-group">
+            <li *ngFor="let file of files">{{ file.name }}
+            </li>
+          </ul>
+				</div>
+
+				<button type="submit" class="btn btn-success col-md-12">
+					Publish
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

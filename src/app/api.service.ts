@@ -20,6 +20,7 @@ export class ApiService {
 
   jwtHelper: JwtHelper = new JwtHelper();
 
+
   isLoggedIn() {
     if (this.getSessionData()) {
       return true;
@@ -80,6 +81,7 @@ export class ApiService {
           return res.json();
         })
         .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+
   }
 
   loginUser(body: Object) {
@@ -93,6 +95,19 @@ export class ApiService {
         })
         .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
+
+  createProduct(body: Object){
+
+    let bodyString = JSON.stringify(body);
+    console.log(bodyString)
+    let headers = new Headers({ 'Content-type': 'application/json'})
+    let options = new RequestOptions({ headers: headers })
+
+    return this.http.post( 'http://localhost:3000/create', bodyString, options)
+      .map((res: Response )=> res.json)
+      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+  }
+
 
   verifyEmail (params: String){
     return this.http.get(this.apiUrl + '/api/verify_email?token=' + params.toString())

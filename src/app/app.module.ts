@@ -13,7 +13,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MemberComponent } from './member/member.component'
 import { AuthGuard } from './auth-guard.service';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component'
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CreateProductComponent } from './create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     NavigationComponent,
     MemberComponent,
     VerifyEmailComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,

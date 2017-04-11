@@ -15,6 +15,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a routerLink="/" routerLinkActive="active" class="">Home</a></li>
+                        <li *ngIf="loggedIn" class=""><a routerLink="/create" routerLinkActive="active" class="">Create</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
                         <li *ngIf="!loggedIn"><a routerLink="/login" class="alc">Login</a></li>
