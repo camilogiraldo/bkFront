@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-create-product',
@@ -9,17 +10,22 @@ import { ApiService } from '../api.service'
 export class CreateProductComponent implements OnInit {
   private product = { type: "Type 1", files: []};
   private files = [];
-  constructor(private api: ApiService) { }
+  private message = '';
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
 
   }
 
   publish(){
-    console.log(this.product.files)
     this.api.createProduct(this.product)
       .subscribe(data => {
         this.product = data
+        if (data.success == 200 ){
+          this.router.navigate(['/'])
+        } else {
+          this.message = data.message;
+        }
       }, err => console.log(err))
   }
 
