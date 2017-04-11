@@ -21,7 +21,7 @@ export class CreateProductComponent implements OnInit {
     this.api.createProduct(this.product)
       .subscribe(data => {
         this.product = data
-        if (data.success == 200 ){
+        if (data.success == true ){
           this.router.navigate(['/'])
         } else {
           this.message = data.message;

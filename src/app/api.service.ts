@@ -103,7 +103,7 @@ export class ApiService {
     let headers = new Headers({ 'Content-type': 'application/json'})
     let options = new RequestOptions({ headers: headers })
 
-    return this.http.post( apiUrl + '/create', bodyString, options)
+    return this.http.post( this.apiUrl + '/create', bodyString, options)
       .map((res: Response )=> res.json)
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
