@@ -17,7 +17,6 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CreateProductComponent } from './create-product/create-product.component';
 import { CollapseDirective } from 'ng2-bootstrap';
 import { ProfileComponent } from './profile/profile.component'
-import { CountryPickerModule } from 'angular2-countrypicker';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { CountryPickerModule } from 'angular2-countrypicker';
     FormsModule,
     HttpModule,
     AppRoutes,
-    CountryPickerModule.forRoot()
   ],
   providers: [ ApiService, AuthGuard ],
   bootstrap: [ AppComponent ]
