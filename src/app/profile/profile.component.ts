@@ -9,7 +9,7 @@ import { ApiService } from '../api.service'
 export class ProfileComponent implements OnInit {
   private currentUser = {};
   private isLogged;
-
+  private country;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
