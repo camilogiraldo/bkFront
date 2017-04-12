@@ -15,6 +15,7 @@ import { AuthGuard } from './auth-guard.service';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { CollapseDirective } from 'ng2-bootstrap'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
     VerifyEmailComponent,
     ProductDetailComponent,
     CreateProductComponent,
+    CollapseDirective
   ],
   imports: [
     BrowserModule,

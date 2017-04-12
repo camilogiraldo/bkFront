@@ -13,11 +13,13 @@ export class NavigationComponent implements OnInit {
 
   loggedIn: Boolean;
   currentUser: {};
+  public isCollapsed: boolean;
   constructor(private api: ApiService, private router: Router) { }
 
   jwtHelper: JwtHelper = new JwtHelper();
 
   ngOnInit() {
+    this.isCollapsed = true;
     this.currentUser = this.api.getSessionData()
     this.loggedIn = this.api.isLoggedIn();
 
