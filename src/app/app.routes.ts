@@ -10,16 +10,19 @@ import { AuthGuard } from './auth-guard.service'
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full'},
+  { path: 'profile', redirectTo: 'profile/show', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'verify_email', component: VerifyEmailComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   { path: 'memberinfo', component: MemberComponent, canActivate: [AuthGuard]},
-  { path: 'create', component: CreateProductComponent, canActivate: [AuthGuard]}
+  { path: 'create', component: CreateProductComponent, canActivate: [AuthGuard]},
+  { path: 'profile/show', component: ProfileComponent, canActivate: [AuthGuard]},
 ]
 
 export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(router);
