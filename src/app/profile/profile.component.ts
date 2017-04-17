@@ -9,15 +9,27 @@ import { ApiService } from '../api.service'
 export class ProfileComponent implements OnInit {
   private currentUser = {};
   private isLogged;
-  private country;
+  private countries = [];
   constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.loadCountries();
     this.currentUser = this.api.getSessionData()
     this.isLogged = this.api.isLoggedIn();
+    console.log(navigator.geolocation)
   }
 
   updateProfile(){
     //code for update profile goes here
+  }
+
+  loadCountries(){
+    this.api.getCountries()
+      .subscribe(
+      data =>{
+        this.countries = data
+      },
+      err => console.log(err))
+
   }
 }

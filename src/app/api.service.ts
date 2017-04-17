@@ -116,4 +116,10 @@ export class ApiService {
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
+  getCountries(){
+    return this.http.get('https://restcountries.eu/rest/v2/all')
+      .map((res: Response) => res.json())
+      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+  }
+
 }
