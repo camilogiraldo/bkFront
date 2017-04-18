@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.user)
     this.api.loginUser(this.user)
       .subscribe(data => {
         this.response = data;
@@ -33,17 +32,18 @@ export class LoginComponent implements OnInit {
             setTimeout(function(){
               this.message = '';
             }.bind(this) , 6000)
-            console.log('bad response')
           } else {
             this.token = data.token;
             localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
             this.router.navigate(['/products'])
           }
         }
-      }, err => console.log(err))
-
+      }, err => { this.message = JSON.stringify(err),
+          this.message = err.message;
+          setTimeout(function(){
+            this.message = '';
+          }.bind(this) , 6000)
+      })
 
   }
-
-
 }

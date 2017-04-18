@@ -11,10 +11,30 @@ export class SignupComponent implements OnInit {
 
   constructor(private api: ApiService, private router: Router) { }
 
-  private user = {};
+  private user = { location: ""};
   private response = {};
   private message = '';
+  private countries =[];
+  private location;
+  
   ngOnInit() {
+    this.loadCountries();
+
+  }
+
+  loadCountries(){
+    this.api.getCountries()
+      .subscribe(
+      data =>{
+        this.countries = data
+      },
+      err => console.log(err))
+
+  }
+
+  onChangeType(country) {
+    this.user.location = country;
+      console.log(country)
   }
 
   signup(){

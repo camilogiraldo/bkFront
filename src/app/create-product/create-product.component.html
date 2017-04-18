@@ -17,18 +17,19 @@
 				</dd>
 
 			</dl>
+			<hr class="colorgraph">
 			<form role="form" (ngSubmit)="publish()">
         <div class="form-group">
           <input [(ngModel)]="product.name" type="text" name="product_name" id="product_name" class="form-control input-lg" placeholder="Product Name" tabindex="1" required="">
         </div>
         <div class="form-group">
           <label for="comment">Product description:</label>
-          <textarea [(ngModel)]="product.description" name="product_description" id="product_description" class="form-control" rows="5" placeholder="Product Description..." required=""></textarea>
+          <textarea [(ngModel)]="product.description" name="product_description" id="product_description" class="form-control"  tabindex="2"  rows="5" placeholder="Product Description..." required=""></textarea>
         </div>
 
           <div class="form-group">
             <label for="exampleSelect1">Product type</label>
-            <select (change)="onChangeType($event.target.value)" class="form-control" id="exampleSelect1" >
+            <select (change)="onChangeType($event.target.value)" class="form-control" id="exampleSelect1"   tabindex="3" >
               <option>Type 1</option>
               <option>Type 2</option>
               <option>Type 3</option>
@@ -40,15 +41,15 @@
           <legend>Product status</legend>
           <div class="form-check">
             <label class="form-check-label">
-              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="new" checked="">
+              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="new" checked=""  tabindex="5" >
               New
-              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="used">
+              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="used"  tabindex="6" >
               Used
             </label>
           </div>
         </fieldset>
         <div class="form-group">
-          <input [(ngModel)]="product.price" type="number" name="product_price" id="product_price" class="form-control input-md col-md-4" placeholder="Price" required>
+          <input [(ngModel)]="product.price" type="number" name="product_price" id="product_price" class="form-control input-md col-md-4" placeholder="Price"  tabindex="7" required>
         </div>
         <br>
         <br>
@@ -56,7 +57,7 @@
 					<label for="exampleInputFile">
 						Images
 					</label>
-					<input (change)="onChangeFiles($event)" type="file" id="exampleInputFile" multiple  required=""/>
+					<input (change)="onChangeFiles($event)" type="file" id="exampleInputFile" multiple  required="" tabindex="8"/>
 					<p class="help-block">
 						Be sure to provide appropiate photos for your product.
 					</p>
@@ -65,12 +66,13 @@
             </li>
           </ul>
 				</div>
-
-				<button type="submit" class="btn btn-success col-md-12">
+				<hr class="colorgraph">
+				<button type="submit" class="btn btn-success col-md-12" tabindex="9">
 					Publish
 				</button>
 			</form>
-			{{ message }}
+
 		</div>
 	</div>
 </div>
+<br>

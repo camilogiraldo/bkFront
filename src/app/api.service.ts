@@ -1,7 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Product } from '../app/model/product';
-import {Observable} from 'rxjs/Rx';
+import { Observable   } from 'rxjs/Rx';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -90,10 +90,13 @@ export class ApiService {
     let options = new RequestOptions({ headers: headers})
 
     return this.http.post(this.apiUrl + '/api/authenticate', bodyString, options )
-        .map((res: Response) => {
-          return res.json();
-        })
-        .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+        .map((res: Response) =>
+         res.json()
+        )
+        .catch((res => {
+          // The error callback (second parameter) is called
+          return Observable.throw(res.json())
+        }))
   }
 
   createProduct(body: Object){
