@@ -9,6 +9,7 @@
 <button (click)='getProducts()'>Traer products</button> -->
 
 <div class="container-fluid">
+  <app-spinner *ngIf="loading"></app-spinner>
   <div class="col-md-4" *ngFor="let product of products">
       <h3> <a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></h3>
       <img src="http://placehold.it/350x350" alt="">

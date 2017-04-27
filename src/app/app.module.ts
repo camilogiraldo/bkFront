@@ -16,7 +16,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { CollapseDirective } from 'ng2-bootstrap';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { SpinnerComponent } from './spinner/spinner.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProfileComponent } from './profile/profile.component'
     ProductDetailComponent,
     CreateProductComponent,
     CollapseDirective,
-    ProfileComponent
+    ProfileComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
