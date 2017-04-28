@@ -25,21 +25,24 @@ export class VerifyEmailComponent implements OnInit {
     this.api.verifyEmail(this.token)
       .subscribe(data => {
         this.response = data;
-        if (!this.response) {
-          this.router.navigate(['/login'])
-        }  else {
           if(data.success == false) {
             this.message = 'Login failed. Try again';
             setTimeout(function(){
               this.message = '';
-            }.bind(this) , 6000)
+              this.router.navigate(['/login'])
+            }.bind(this) , 2000)
             console.log('bad response')
           } else {
             this.token = data.token;
             localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
             this.router.navigate(['/products'])
           }
-        }
-      }, err => console.log(err))
+      }, err => {
+          this.message = err.message;
+          setTimeout(function(){
+            this.message = '';
+            this.router.navigate(['/login'])
+          }.bind(this) , 2000)
+      })
   }
 }

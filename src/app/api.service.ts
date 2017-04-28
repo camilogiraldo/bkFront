@@ -116,7 +116,11 @@ export class ApiService {
   verifyEmail (params: String){
     return this.http.get(this.apiUrl + '/api/verify_email?token=' + params.toString())
       .map((res: Response) => res.json() )
-      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+      .catch((res => {
+        // The error callback (second parameter) is called
+        return Observable.throw(res.json())
+
+      }))
   }
 
   getCountries(){
