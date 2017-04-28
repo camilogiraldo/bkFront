@@ -22,13 +22,12 @@ export class NavigationComponent implements OnInit {
     this.isCollapsed = true;
     this.currentUser = this.api.getSessionData()
     this.loggedIn = this.api.isLoggedIn();
-
   }
 
 
   logout(){
+    this.router.navigate(['/products']);
     localStorage.removeItem('currentUser');
-    this.router.navigateByUrl['/products'];
   }
 
 }

@@ -25,6 +25,7 @@ export class VerifyEmailComponent implements OnInit {
     this.api.verifyEmail(this.token)
       .subscribe(data => {
         this.response = data;
+        this.message = 'Verifying email ...'
           if(data.success == false) {
             this.message = 'Login failed. Try again';
             setTimeout(function(){
