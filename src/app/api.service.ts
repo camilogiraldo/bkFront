@@ -12,7 +12,7 @@ import { JwtHelper } from 'angular2-jwt';
 export class ApiService {
 
   loggedIn: Boolean;
-  private currentUser: {};
+  private currentUser: { exp };
 
   constructor(private http: Http) { }
 
@@ -32,7 +32,12 @@ export class ApiService {
   getSessionData(){
     if(localStorage.getItem('currentUser')) {
       this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token);
-      return this.currentUser
+      if (this.currentUser.exp <= Date.now()){
+        localStorage.removeItem('currentUser');
+        return null
+      }else {
+        return this.currentUser
+      }
     } else {
       return null;
     }
