@@ -55,7 +55,11 @@ export class ApiService {
   getProducts() {
     return this.http.get(this.apiUrl + '/products')
             .map((res:Response) => res.json())
-            .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+            .catch((res => {
+              // The error callback (second parameter) is called
+              return Observable.throw(res.json())
+
+            }))
   }
 
   getProductByID(id: String) {

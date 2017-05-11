@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
   private isLogged;
   private products = [];
   private loading = true;
+  private message ='';
 
   constructor(private api: ApiService) {
       this.currentUser = this.api.getSessionData()
@@ -32,6 +33,12 @@ export class ProductsComponent implements OnInit {
     this.api.getProducts().subscribe(data => {
         this.loading = false;
         this.products = data
+    }, err => {
+        this.loading = false;
+        this.message = JSON.stringify(err),
+        console.log(err)
+        console.log(this.message)
+        this.message = err.message
     });
   }
 

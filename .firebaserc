@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "stage-bkfront"
+    "default": "stage-bkfront",
+    "staging": "stage-bkfront"
   }
 }

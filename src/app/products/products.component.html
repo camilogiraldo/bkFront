@@ -10,12 +10,15 @@
 
 <div class="container-fluid">
   <app-spinner *ngIf="loading"></app-spinner>
+  <br>
+  <div *ngIf="message" class="alert alert-danger box-msg fade in" role="alert">
+   {{ message }}
+  </div>
+
   <div class="col-md-4" *ngFor="let product of products">
     <h3> <a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></h3>
 
       <img src="{{product.images}}" alt="" class="img-responsive">
-
-
 
       <br />
       <span> {{ product.type}} </span>
