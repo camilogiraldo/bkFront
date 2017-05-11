@@ -57,7 +57,15 @@
 					<label for="exampleInputFile">
 						Images
 					</label>
-					<input (change)="onChangeFiles($event)" type="file" id="exampleInputFile" multiple  required="" tabindex="8"/>
+<!-- 					<input (change)="onChangeFiles($event)" type="file" id="exampleInputFile" multiple  required="" tabindex="8"/> -->
+
+          <!-- File input for upload without using the plugin. -->
+      <input id="photo" type="file" accept="image/*"  required="" tabindex="8"/>
+			<br>    <!-- button to trigger the file upload when submitted -->
+          <!-- <button type="button" class="btn btn-success btn-s" (click)="upload()">
+          Upload photo
+          </button> -->
+
 					<p class="help-block">
 						Be sure to provide appropiate photos for your product.
 					</p>

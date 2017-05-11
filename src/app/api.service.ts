@@ -59,7 +59,6 @@ export class ApiService {
   }
 
   getProductByID(id: String) {
-    console.log(id)
     return this.http.get(this.apiUrl + '/products/' + id)
       .map((res: Response) => res.json() )
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
@@ -106,20 +105,19 @@ export class ApiService {
 
   createProduct(body: Object){
     let token = this.getSessionToken();
-    let bodyString = JSON.stringify(body);
-    console.log(bodyString)
-    let headers = new Headers({ 'Content-type': 'application/json'})
+    let headers = new Headers({})
     headers.append('Authorization',  token.toString());
+    headers.delete('Content-type')
     let options = new RequestOptions({ headers: headers })
 
-    return this.http.post( this.apiUrl + '/create', bodyString, options)
+    return this.http.post(this.apiUrl + '/create', body, options)
       .map((res: Response )=> res.json())
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
 
   verifyEmail (params: String){
-    return this.http.get(this.apiUrl + '/api/verify_email?token=' + params.toString())
+    return this.http.get( this.apiUrl + '/api/verify_email?token=' + params.toString())
       .map((res: Response) => res.json() )
       .catch((res => {
         // The error callback (second parameter) is called
@@ -133,5 +131,7 @@ export class ApiService {
       .map((res: Response) => res.json())
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
+
+
 
 }
