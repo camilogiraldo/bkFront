@@ -12,33 +12,35 @@
   <app-spinner *ngIf="loading"></app-spinner>
   <br>
   <div *ngIf="message" class="alert alert-danger box-msg fade in" role="alert">
-   {{ message }}
+    {{ message }}
   </div>
-  <md-card class="col-md-4"  *ngFor="let product of products">
-  <!-- <div class="col-md-4" *ngFor="let product of products"> -->
+  <div class="row">
+
+  <md-card class="col-md-4" *ngFor="let product of products">
+    <!-- <div class="col-md-4" *ngFor="let product of products"> -->
 
     <md-card-header>
-      <div md-card-avatar  class="example-header-image"></div>
-      <md-card-title><a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></md-card-title>
-      <md-card-subtitle>{{product.createdBy}}
-        <br> <i class="fa fa-map-marker" aria-hidden="true"></i> {{ currentUser.location }}
+      <div md-card-avatar class="example-header-image"></div>
+      <md-card-title><a [routerLink]="['/products/', product._id]" routerLinkActive="active">{{ product.name  | uppercase}} </a></md-card-title>
+      <md-card-subtitle>{{ product.createdBy }}
+
+        <!-- <br> <i class="fa fa-map-marker" aria-hidden="true"></i> {{ currentUser.location }} -->
       </md-card-subtitle>
     </md-card-header>
-    <!-- <h3> <a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></h3> -->
 
-      <img src="{{product.images}}" alt="" [routerLink]="['/products/', product._id]" routerLinkActive="active" class="img-responsive">
-      <md-card-content>
-    <p>
+    <img src="{{product.images}}" alt="" [routerLink]="['/products/', product._id]" routerLinkActive="active" class="img-responsive">
+    <md-card-content>
+      <p>
         {{ product.description | uppercase }}
-    </p>
-  </md-card-content>
-      <br />
+      </p>
+    </md-card-content>
+    <br />
 
-      <div class="price">$ {{ product.price }}</div> <span> {{ product.status}}</span>
-    <!-- </div> -->
+    <div class="price">$ {{ product.price }}</div> <span> {{ product.status}}</span>
     <md-card-actions>
-      <button  type="submit" class="btn btn-success">ADD TO CART <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
-      <button  type="submit" class="btn btn-default">SHARE</button>
+      <button type="submit" class="btn btn-success">ADD TO CART <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
+      <button type="submit" class="btn btn-default">SHARE</button>
     </md-card-actions>
-    </md-card>
+  </md-card>
+</div>
 </div>
