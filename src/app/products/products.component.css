@@ -13,14 +13,14 @@
 .row {
  -moz-column-width: 25em;
  -webkit-column-width: 25em;
- -moz-column-gap: 15px;
- -webkit-column-gap:15px;
+ -moz-column-gap: 10px;
+ -webkit-column-gap:10px;
 }
 
 .row > .col-md-4 {
  display: inline-block;
  padding: 1;
- margin: 20px;
- width: 100%;
+ margin: 10px;
+ width: 96%;
  float:none;
 }
