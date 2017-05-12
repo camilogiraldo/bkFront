@@ -1,0 +1,12 @@
+
+.example-header-image {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png');
+  background-size: cover;
+}
+
+.price {
+  margin: 8px 0;
+  font-weight: 900;
+  color: #4da3e2;
+  font-size: 2.5rem;
+}

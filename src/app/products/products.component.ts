@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { User } from '../model/user'
+import {MdCardModule} from '@angular/material';
+
 
 
 @Component({
@@ -36,8 +38,6 @@ export class ProductsComponent implements OnInit {
     }, err => {
         this.loading = false;
         this.message = JSON.stringify(err),
-        console.log(err)
-        console.log(this.message)
         this.message = err.message
     });
   }

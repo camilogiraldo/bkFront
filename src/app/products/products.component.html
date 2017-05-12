@@ -14,14 +14,31 @@
   <div *ngIf="message" class="alert alert-danger box-msg fade in" role="alert">
    {{ message }}
   </div>
+  <md-card class="col-md-4"  *ngFor="let product of products">
+  <!-- <div class="col-md-4" *ngFor="let product of products"> -->
 
-  <div class="col-md-4" *ngFor="let product of products">
-    <h3> <a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></h3>
+    <md-card-header>
+      <div md-card-avatar  class="example-header-image"></div>
+      <md-card-title><a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></md-card-title>
+      <md-card-subtitle>{{product.createdBy}}
+        <br> <i class="fa fa-map-marker" aria-hidden="true"></i> {{ currentUser.location }}
+      </md-card-subtitle>
+    </md-card-header>
+    <!-- <h3> <a [routerLink]="['/products/', product._id]" routerLinkActive="active" >{{ product.name  | uppercase}} </a></h3> -->
 
-      <img src="{{product.images}}" alt="" class="img-responsive">
-
+      <img src="{{product.images}}" alt="" [routerLink]="['/products/', product._id]" routerLinkActive="active" class="img-responsive">
+      <md-card-content>
+    <p>
+        {{ product.description | uppercase }}
+    </p>
+  </md-card-content>
       <br />
-      <span> {{ product.type}} </span>
-      <span>Price: <strong> {{ product.price }} </strong></span>
-    </div>
+
+      <div class="price">$ {{ product.price }}</div> <span> {{ product.status}}</span>
+    <!-- </div> -->
+    <md-card-actions>
+      <button  type="submit" class="btn btn-success">ADD TO CART <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
+      <button  type="submit" class="btn btn-default">SHARE</button>
+    </md-card-actions>
+    </md-card>
 </div>

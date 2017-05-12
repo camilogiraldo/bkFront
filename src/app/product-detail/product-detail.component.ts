@@ -15,7 +15,6 @@ export class ProductDetailComponent implements OnInit {
     this.router.params
           .map(params =>{
             this.id = params['id']
-            console.log(this.id)
           })
           .subscribe((id) => {
             this.api.getProductByID(this.id)
