@@ -12,6 +12,8 @@ export class MemberComponent implements OnInit {
   private token;
   private currentUser;
   private sessionToken;
+  private loading;
+  private message;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class MemberComponent implements OnInit {
   }
 
   getMemberInfo() {
-    if ( this.sessionToken ) {
+    if (this.sessionToken) {
       console.log(this.sessionToken);
       this.api.getMemberInfo(this.sessionToken)
         .subscribe(data => this.user = data);
@@ -29,7 +31,16 @@ export class MemberComponent implements OnInit {
     } else {
       console.log('no current user')
     }
+  }
 
+  updateMemberInfo(){
+    this.api.updateProfileInfo(this.user, this.sessionToken)
+    .subscribe(data => {
+        this.loading = false;
+    }, err => {
+        this.loading = false;
+        this.message = JSON.stringify(err)
+    });
   }
 
 }

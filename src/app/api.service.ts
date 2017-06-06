@@ -16,8 +16,8 @@ export class ApiService {
 
   constructor(private http: Http) { }
 
-  private apiUrl = 'https://stage-bkbackend.herokuapp.com'
-  // private apiUrl = 'http://localhost:3000'
+  // private apiUrl = 'https://stage-bkbackend.herokuapp.com'
+  private apiUrl = 'http://localhost:3000'
 
   jwtHelper: JwtHelper = new JwtHelper();
 
@@ -137,6 +137,22 @@ export class ApiService {
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
+  updateProfileInfo(body: Object, token: Object){
+    let bodyString = JSON.stringify(body);
+    let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
+    headers.append('Authorization',  token.toString());
+    let options = new RequestOptions({ headers: headers})
+    console.log(body)
+    console.log(options)
+
+    return this.http.patch(this.apiUrl + '/api/update_user', body, options)
+      .map((res: Response) => res.json())
+      .catch((res => {
+        // The error callback (second parameter) is called
+        return Observable.throw(res.json())
+
+      }))
+  }
 
 
 }

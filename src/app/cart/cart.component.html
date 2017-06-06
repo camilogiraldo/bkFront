@@ -1,0 +1,11 @@
+<app-navigation></app-navigation>
+<br>
+<br>
+
+<div class="container-fluid">
+  <app-spinner *ngIf="loading"></app-spinner>
+  <br>
+  <div *ngIf="message" class="alert alert-danger box-msg fade in" role="alert">
+    {{ message }}
+  </div>
+</div>

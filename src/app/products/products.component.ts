@@ -42,4 +42,8 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  addToCart(){
+    console.log('added')
+  }
+
 }
