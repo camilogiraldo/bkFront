@@ -69,6 +69,7 @@ export class ApiService {
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
+
   getMemberInfo(token: Object) {
     let headers = new Headers({ 'Content-type': 'application/json' });
     headers.append('Authorization',  token.toString());
@@ -77,6 +78,17 @@ export class ApiService {
     return this.http.get( this.apiUrl + '/api/memberinfo', options)
       .map((res: Response) => res.json())
       .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+  }
+
+  addProductToCart(id: String, token: String) {
+    let body = id.toString;
+    let headers = new Headers({});  // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers})
+    headers.append('Authorization',  token.toString());
+
+    return this.http.post(this.apiUrl + '/api/addcart/' + id,  body, options )
+    .map((res: Response) => res.json() )
+    .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   signupUser(user: Object) {
@@ -91,6 +103,15 @@ export class ApiService {
         })
         .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
 
+  }
+  getItemsInCart(token: String){
+    let headers = new Headers({ 'Content-type': 'application/json' });
+    headers.append('Authorization',  token.toString());
+
+    let options = new RequestOptions({ headers: headers })
+    return this.http.get(this.apiUrl + '/api/cart/', options)
+      .map((res: Response) => res.json() )
+      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   loginUser(body: Object) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../model/user'
 
 @Component({
@@ -10,14 +10,15 @@ import { User } from '../model/user'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
 
   private user = {};
   private token = '';
   private message = '';
   private response = {};
-
+  private  returnUrl: string;
   ngOnInit() {
+     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login() {
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         this.response = data;
         if (!this.response) {
-          this.router.navigate(['/login'])
+           this.router.navigate(['/login'])
         }  else {
           if(data.success == false) {
             this.message = data.message;
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
           } else {
             this.token = data.token;
             localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
-            this.router.navigate(['/products'])
+            this.router.navigateByUrl(this.returnUrl);
           }
         }
       }, err => { this.message = JSON.stringify(err),
@@ -44,6 +45,5 @@ export class LoginComponent implements OnInit {
             this.message = '';
           }.bind(this) , 6000)
       })
-
   }
 }

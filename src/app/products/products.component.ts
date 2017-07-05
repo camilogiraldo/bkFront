@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Router, CanActivate , RouterStateSnapshot } from '@angular/router';
 import { User } from '../model/user'
 import {MdCardModule} from '@angular/material';
 
@@ -21,14 +22,16 @@ export class ProductsComponent implements OnInit {
   private products = [];
   private loading = true;
   private message ='';
-
-  constructor(private api: ApiService) {
+  private response;
+  private sessionToken;
+  constructor(private api: ApiService, private route: Router) {
       this.currentUser = this.api.getSessionData()
-      this.isLogged = this.api.isLoggedIn();
   }
 
   ngOnInit() {
     this.getProducts();
+    this.isLogged = this.api.isLoggedIn();
+    this.sessionToken = this.api.getSessionToken();
   }
 
   getProducts() {
@@ -42,8 +45,18 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  addToCart(){
-    console.log('added')
+  addToCart(product_id){
+    this.api.addProductToCart(product_id, this.sessionToken).subscribe(data => {
+        this.response = data;
+        console.log(this.response)
+    }, err => {
+
+    })
+  }
+
+  loginAndBuy(){
+    // TODO: 
+    this.route.navigate(['/login'])
   }
 
 }
