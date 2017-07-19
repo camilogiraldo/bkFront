@@ -16,7 +16,7 @@ import { NavigationComponent } from '../navigation/navigation.component'
 export class ProductsComponent implements OnInit {
   
 
-  private currentUser = { };
+  private currentUser = {};
   private decodedTokenExp = {};
   private decodedTokenIsExp = {};
   private isLogged;
@@ -29,17 +29,18 @@ export class ProductsComponent implements OnInit {
   private newUser;
 
 
-
-
   constructor(private api: ApiService, private route: Router) {
-      this.currentUser = this.api.getSessionData()
+      this.currentUser = this.api.getSessionData();
   }
 
   ngOnInit() {
     this.getProducts();
     this.isLogged = this.api.isLoggedIn();
     this.sessionToken = this.api.getSessionToken();
-    this.newUser = this.currentUser 
+    if(this.isLogged){
+      this.newUser = this.currentUser 
+    }
+    
   }
 
   getProducts() {
@@ -61,7 +62,10 @@ export class ProductsComponent implements OnInit {
         //Updates userToken with cart updated
         localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
         console.log(this.response)
-        this.newUser =  this.api.getSessionData()
+     
+        this.newUser = this.api.getSessionData()
+          
+        
     }, err => {
 
     })

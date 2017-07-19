@@ -16,8 +16,8 @@ export class ApiService {
 
   constructor(private http: Http) { }
 
-  // private apiUrl = 'https://stage-bkbackend.herokuapp.com'
-  private apiUrl = 'http://localhost:3000'
+  private apiUrl = 'https://stage-bkbackend.herokuapp.com'
+  //private apiUrl = 'http://localhost:3000'
 
   jwtHelper: JwtHelper = new JwtHelper();
 

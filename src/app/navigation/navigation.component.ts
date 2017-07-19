@@ -15,15 +15,20 @@ export class NavigationComponent implements OnInit {
   loggedIn: Boolean;
   currentUser: {};
   public isCollapsed: boolean;
+  public isLogged;
   constructor(private api: ApiService, private router: Router) { }
 
   jwtHelper: JwtHelper = new JwtHelper();
 
   ngOnInit() {
     this.isCollapsed = true;
-    this.currentUser = this.api.getSessionData()
+   
+  
     console.log(this.currentUser)
     this.loggedIn = this.api.isLoggedIn();
+    if (this.loggedIn) {
+      this.currentUser = this.api.getSessionData()
+    }
   }
 
   updateCart(){
