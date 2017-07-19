@@ -14,10 +14,11 @@ export class CreateProductComponent implements OnInit {
   private product = { type: "Type 1", files: {} };
   private files = [];
   private message = '';
+  private currentUser;
   constructor(private api: ApiService, private router: Router, private http: Http, private el: ElementRef) { }
 
   ngOnInit() {
-
+    this.currentUser = this.api.getSessionData();
   }
 
   publish() {

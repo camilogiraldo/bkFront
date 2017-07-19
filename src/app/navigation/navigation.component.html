@@ -28,7 +28,9 @@
                             </ul>
                         </li> -->
 
-                        <li *ngIf="loggedIn" class=""><a routerLink="/cart" class="alc">({{ currentUser.itemsInCart.length }}) <i class="fa fa-shopping-cart" aria-hidden="true"></i>  Cart</a></li>
+                        <!-- <li *ngIf="loggedIn" class=""><a routerLink="/cart" class="alc">({{ currentUser.itemsInCart.length }}) <i class="fa fa-shopping-cart" aria-hidden="true"></i>  Cart</a></li>
+                        -->
+                        <li *ngIf="loggedIn" class=""><a routerLink="/cart" class="alc">( {{ newUser.itemsInCart.length }} ) <i class="fa fa-shopping-cart" aria-hidden="true"></i>  Cart</a></li>
                         <li *ngIf="loggedIn" class=""><a href="" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout</a></li>
                     </ul>
                 </div>

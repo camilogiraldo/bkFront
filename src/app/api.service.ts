@@ -59,7 +59,6 @@ export class ApiService {
             .catch((res => {
               // The error callback (second parameter) is called
               return Observable.throw(res.json())
-
             }))
   }
 
@@ -174,6 +173,4 @@ export class ApiService {
 
       }))
   }
-
-
 }

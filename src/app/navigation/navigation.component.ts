@@ -10,6 +10,7 @@ import { ApiService } from '../api.service'
 
 })
 export class NavigationComponent implements OnInit {
+  @Input('newUser') newUser: String;
 
   loggedIn: Boolean;
   currentUser: {};
@@ -25,6 +26,9 @@ export class NavigationComponent implements OnInit {
     this.loggedIn = this.api.isLoggedIn();
   }
 
+  updateCart(){
+    this.currentUser = this.api.getSessionData()
+  }
 
   logout(){
     this.router.navigate(['/products']);

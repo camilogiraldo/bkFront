@@ -9,12 +9,13 @@ import { ApiService } from '../api.service';
 export class CartComponent implements OnInit {
   private sessionToken;
   private response;
-
+  private newUser;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
         this.sessionToken = this.api.getSessionToken();
-        this.getCart()
+        this.getCart();
+        this.newUser = this.api.getSessionData();
   }
 
   getCart(){

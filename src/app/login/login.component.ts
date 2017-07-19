@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
   private message = '';
   private response = {};
   private  returnUrl: string;
+ 
   ngOnInit() {
      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  
   }
 
   login() {
