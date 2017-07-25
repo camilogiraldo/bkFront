@@ -10,6 +10,7 @@ export class CartComponent implements OnInit {
   private sessionToken;
   private response;
   private newUser;
+  private products = [];
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -20,8 +21,8 @@ export class CartComponent implements OnInit {
 
   getCart(){
     this.api.getItemsInCart(this.sessionToken).subscribe( data => {
-        this.response = data;
-        console.log(this.response)
+        this.products = data;
+        console.log( this.products )
     }, err => {
 
     })

@@ -17,7 +17,7 @@ export class ApiService {
   constructor(private http: Http) { }
 
   private apiUrl = 'https://stage-bkbackend.herokuapp.com'
-  //private apiUrl = 'http://localhost:3000'
+  // private apiUrl = 'http://localhost:3000'
 
   jwtHelper: JwtHelper = new JwtHelper();
 
@@ -101,8 +101,8 @@ export class ApiService {
           return res.json();
         })
         .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
-
   }
+
   getItemsInCart(token: String){
     let headers = new Headers({ 'Content-type': 'application/json' });
     headers.append('Authorization',  token.toString());
