@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   private message = '';
   private countries =[];
   private location;
-  
+
   ngOnInit() {
     this.loadCountries();
 
@@ -34,7 +34,6 @@ export class SignupComponent implements OnInit {
 
   onChangeType(country) {
     this.user.location = country;
-      console.log(country)
   }
 
   signup(){

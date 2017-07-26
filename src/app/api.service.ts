@@ -162,8 +162,7 @@ export class ApiService {
     let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
     headers.append('Authorization',  token.toString());
     let options = new RequestOptions({ headers: headers})
-    console.log(body)
-    console.log(options)
+  
 
     return this.http.patch(this.apiUrl + '/api/update_user', body, options)
       .map((res: Response) => res.json())

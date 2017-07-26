@@ -24,7 +24,7 @@ export class MemberComponent implements OnInit {
 
   getMemberInfo() {
     if (this.sessionToken) {
-      console.log(this.sessionToken);
+    
       this.api.getMemberInfo(this.sessionToken)
         .subscribe(data => this.user = data);
 

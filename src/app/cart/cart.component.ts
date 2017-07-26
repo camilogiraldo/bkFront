@@ -11,6 +11,7 @@ export class CartComponent implements OnInit {
   private response;
   private newUser;
   private products = [];
+  private totalAmount = 0;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -22,7 +23,11 @@ export class CartComponent implements OnInit {
   getCart(){
     this.api.getItemsInCart(this.sessionToken).subscribe( data => {
         this.products = data;
-        console.log( this.products )
+        data.forEach(e =>
+          {
+            this.totalAmount += (e.price * e.count);
+          })
+
     }, err => {
 
     })

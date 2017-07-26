@@ -22,9 +22,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.isCollapsed = true;
-   
   
-    console.log(this.currentUser)
     this.loggedIn = this.api.isLoggedIn();
     if (this.loggedIn) {
       this.currentUser = this.api.getSessionData()
