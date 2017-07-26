@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   private newUser;
   private products = [];
   private totalAmount = 0;
+  private newToken;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -34,6 +35,28 @@ export class CartComponent implements OnInit {
   }
 
   deleteFromCart(product){
-    console.log("delete" + product);
+    this.api.deleteProductFromCart(product, this.sessionToken).subscribe(data => {
+      this.totalAmount = 0;
+      this.products = data.cart;
+      this.newToken = data.token;
+    
+      localStorage.removeItem('currentUser');
+        //Updates userToken with cart updated
+      localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
+      this.newUser = this.api.getSessionData();
+      console.log(this.products.length);
+      if(this.products.length > 0){
+        this.products.forEach(e =>
+        {
+            console.log("Price" + e.price)
+            console.log(e)
+            this.totalAmount +=  (e.price * e.count);         
+        })
+      } else {
+        this.totalAmount = 0;
+      }
+    }, err => {
+
+    })
   }
 }

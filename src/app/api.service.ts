@@ -17,7 +17,7 @@ export class ApiService {
   constructor(private http: Http) { }
 
   private apiUrl = 'https://stage-bkbackend.herokuapp.com'
-  // private apiUrl = 'http://localhost:3000'
+  //private apiUrl = 'http://localhost:3000'
 
   jwtHelper: JwtHelper = new JwtHelper();
 
@@ -86,6 +86,17 @@ export class ApiService {
     headers.append('Authorization',  token.toString());
 
     return this.http.post(this.apiUrl + '/api/addcart/' + id,  body, options )
+    .map((res: Response) => res.json() )
+    .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+  }
+
+  deleteProductFromCart(id: String, token: String) {
+    let body = id.toString;
+    let headers = new Headers({});  // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers})
+    headers.append('Authorization',  token.toString());
+
+    return this.http.post(this.apiUrl + '/api/deletecart/' + id,  body, options )
     .map((res: Response) => res.json() )
     .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
   }
