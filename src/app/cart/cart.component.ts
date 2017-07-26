@@ -32,4 +32,8 @@ export class CartComponent implements OnInit {
 
     })
   }
+
+  deleteFromCart(product){
+    console.log("delete" + product);
+  }
 }

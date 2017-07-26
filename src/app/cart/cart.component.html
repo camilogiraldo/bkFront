@@ -27,7 +27,7 @@
       <br/>
       <span><strong>Units in cart: </strong><input value="{{ product.count }}"/></span>
       <md-card-actions>
-        <button type="submit" class="btn btn-default">SHARE</button>
+        <button type="submit" class="btn btn-danger" (click)="deleteFromCart(product._id)">DELETE FROM CART </button>
       </md-card-actions>
 
     </div>
