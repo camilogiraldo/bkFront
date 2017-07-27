@@ -7,6 +7,7 @@
   <app-spinner *ngIf="loading"></app-spinner>
   <br>
   <br>
+
   <md-card class="col-md-6 col-md-offset-1" *ngFor="let product of products">
     <!-- <div class="col-md-6 col-md-offset-4" > -->
     <div class="col-md-8">
@@ -39,5 +40,14 @@
       <button *ngIf="!isLogged" type="submit" (click)="loginAndBuy()" class="btn btn-success centerButton">PROCEED TO CHECKOUT <i class="fa fa-dollar" aria-hidden="true"></i> </button>
     </md-card-actions>
   </md-card>
+</div>
+<div *ngIf="noItemsInCart" >
+  <div class="col-md-5 col-md-offset-3">
+    <i class="fa fa-shopping-cart fa-5x" aria-hidden="true"></i>
+    <h3>
+      No items in cart
+    </h3>
+
+  </div>
 </div>
 </div>

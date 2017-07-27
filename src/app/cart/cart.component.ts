@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   private products = [];
   private totalAmount = 0;
   private newToken;
+  private noItemsInCart = false;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class CartComponent implements OnInit {
   getCart(){
     this.api.getItemsInCart(this.sessionToken).subscribe( data => {
         this.products = data;
+        this.products.length > 0 ? this.noItemsInCart = false : this.noItemsInCart = true
         data.forEach(e =>
           {
             this.totalAmount += (e.price * e.count);
@@ -36,23 +38,24 @@ export class CartComponent implements OnInit {
 
   deleteFromCart(product){
     this.api.deleteProductFromCart(product, this.sessionToken).subscribe(data => {
+
       this.totalAmount = 0;
       this.products = data.cart;
       this.newToken = data.token;
-    
+
       localStorage.removeItem('currentUser');
         //Updates userToken with cart updated
       localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
       this.newUser = this.api.getSessionData();
       console.log(this.products.length);
       if(this.products.length > 0){
+        this.noItemsInCart = false;
         this.products.forEach(e =>
         {
-            console.log("Price" + e.price)
-            console.log(e)
-            this.totalAmount +=  (e.price * e.count);         
+            this.totalAmount +=  (e.price * e.count);
         })
       } else {
+        this.noItemsInCart = true;
         this.totalAmount = 0;
       }
     }, err => {
