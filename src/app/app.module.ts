@@ -18,7 +18,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { CollapseDirective } from 'ng2-bootstrap';
 import { ProfileComponent } from './profile/profile.component';
 import { SpinnerComponent } from './spinner/spinner.component'
-import {MdCardModule} from '@angular/material';
+import { MdCardModule } from '@angular/material';
 import { CartComponent } from './cart/cart.component';
 
 

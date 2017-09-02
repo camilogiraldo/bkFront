@@ -1,7 +1,8 @@
-import { Injectable }     from '@angular/core';
+import { query } from '@angular/animations';
+import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Product } from '../app/model/product';
-import { Observable   } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -13,14 +14,12 @@ export class ApiService {
 
   loggedIn: Boolean;
   private currentUser: { exp };
-
-  constructor(private http: Http) { }
-
-  private apiUrl = 'https://stage-bkbackend.herokuapp.com'
-  //private apiUrl = 'http://localhost:3000'
-
+  private apiUrl = 'https://stage-bkbackend.herokuapp.com';
+  // private apiUrl = 'http://localhost:3000'
   jwtHelper: JwtHelper = new JwtHelper();
 
+  constructor(private http: Http) { }
+  
 
   isLoggedIn() {
     if (this.getSessionData()) {
@@ -29,14 +28,15 @@ export class ApiService {
       return false;
     }
   }
+
   //return the decoded information from token
-  getSessionData(){
-    if(localStorage.getItem('currentUser')) {
+  getSessionData() {
+    if (localStorage.getItem('currentUser')) {
       this.currentUser = this.jwtHelper.decodeToken(JSON.parse(localStorage.getItem('currentUser')).token);
-      if (this.currentUser.exp <= Date.now()){
+      if (this.currentUser.exp <= Date.now()) {
         localStorage.removeItem('currentUser');
         return null
-      }else {
+      } else {
         return this.currentUser
       }
     } else {
@@ -45,116 +45,116 @@ export class ApiService {
   }
 
   //Returns the token for the currentUser
-  getSessionToken(){
-    if(localStorage.getItem('currentUser')) {
+  getSessionToken() {
+    if (localStorage.getItem('currentUser')) {
       return JSON.parse(localStorage.getItem('currentUser')).token;
-    }else {
+    } else {
       return null
     }
   }
 
   getProducts() {
     return this.http.get(this.apiUrl + '/products')
-            .map((res:Response) => res.json())
-            .catch((res => {
-              // The error callback (second parameter) is called
-              return Observable.throw(res.json())
-            }))
+      .map((res: Response) => res.json())
+      .catch((res => {
+        // The error callback (second parameter) is called
+        return Observable.throw(res.json())
+      }))
   }
 
   getProductByID(id: String) {
     return this.http.get(this.apiUrl + '/products/' + id)
-      .map((res: Response) => res.json() )
-      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
 
   getMemberInfo(token: Object) {
-    let headers = new Headers({ 'Content-type': 'application/json' });
-    headers.append('Authorization',  token.toString());
-    let options = new RequestOptions({ headers: headers })
+    const headers = new Headers({ 'Content-type': 'application/json' });
+    headers.append('Authorization', token.toString());
+    const options = new RequestOptions({ headers: headers })
 
-    return this.http.get( this.apiUrl + '/api/memberinfo', options)
+    return this.http.get(this.apiUrl + '/api/memberinfo', options)
       .map((res: Response) => res.json())
-      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   addProductToCart(id: String, token: String) {
-    let body = id.toString;
-    let headers = new Headers({});  // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers})
-    headers.append('Authorization',  token.toString());
+    const body = id.toString;
+    const headers = new Headers({});  // ... Set content type to JSON
+    const options = new RequestOptions({ headers: headers })
+    headers.append('Authorization', token.toString());
 
-    return this.http.post(this.apiUrl + '/api/addcart/' + id,  body, options )
-    .map((res: Response) => res.json() )
-    .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+    return this.http.post(this.apiUrl + '/api/addcart/' + id, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   deleteProductFromCart(id: String, token: String) {
-    let body = id.toString;
-    let headers = new Headers({});  // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers})
-    headers.append('Authorization',  token.toString());
+    const body = id.toString;
+    const headers = new Headers({});  // ... Set content type to JSON
+    const options = new RequestOptions({ headers: headers })
+    headers.append('Authorization', token.toString());
 
-    return this.http.post(this.apiUrl + '/api/deletecart/' + id,  body, options )
-    .map((res: Response) => res.json() )
-    .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+    return this.http.post(this.apiUrl + '/api/deletecart/' + id, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   signupUser(user: Object) {
-    let bodyString = JSON.stringify(user);
-    let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers})
+    const bodyString = JSON.stringify(user);
+    const headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
+    const options = new RequestOptions({ headers: headers })
 
-    return this.http.post(this.apiUrl + '/api/signup', user, options )
-        .map((res: Response) => {
+    return this.http.post(this.apiUrl + '/api/signup', user, options)
+      .map((res: Response) => {
 
-          return res.json();
-        })
-        .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
-  getItemsInCart(token: String){
-    let headers = new Headers({ 'Content-type': 'application/json' });
-    headers.append('Authorization',  token.toString());
+  getItemsInCart(token: String) {
+    const headers = new Headers({ 'Content-type': 'application/json' });
+    headers.append('Authorization', token.toString());
 
-    let options = new RequestOptions({ headers: headers })
+    const options = new RequestOptions({ headers: headers })
     return this.http.get(this.apiUrl + '/api/cart/', options)
-      .map((res: Response) => res.json() )
-      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
   loginUser(body: Object) {
-    let bodyString = JSON.stringify(body);
-    let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
-    let options = new RequestOptions({ headers: headers})
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
+    const options = new RequestOptions({ headers: headers })
 
-    return this.http.post(this.apiUrl + '/api/authenticate', bodyString, options )
-        .map((res: Response) =>
-         res.json()
-        )
-        .catch((res => {
-          // The error callback (second parameter) is called
-          return Observable.throw(res.json())
-        }))
+    return this.http.post(this.apiUrl + '/api/authenticate', bodyString, options)
+      .map((res: Response) =>
+        res.json()
+      )
+      .catch((res => {
+        // The error callback (second parameter) is called
+        return Observable.throw(res.json())
+      }))
   }
 
-  createProduct(body: Object){
-    let token = this.getSessionToken();
-    let headers = new Headers({})
-    headers.append('Authorization',  token.toString());
+  createProduct(body: Object) {
+    const token = this.getSessionToken();
+    const headers = new Headers({})
+    headers.append('Authorization', token.toString());
     headers.delete('Content-type')
-    let options = new RequestOptions({ headers: headers })
+    const options = new RequestOptions({ headers: headers })
 
     return this.http.post(this.apiUrl + '/create', body, options)
-      .map((res: Response )=> res.json())
-      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
 
-  verifyEmail (params: String){
-    return this.http.get( this.apiUrl + '/api/verify_email?token=' + params.toString())
-      .map((res: Response) => res.json() )
+  verifyEmail(params: String) {
+    return this.http.get(this.apiUrl + '/api/verify_email?token=' + params.toString())
+      .map((res: Response) => res.json())
       .catch((res => {
         // The error callback (second parameter) is called
         return Observable.throw(res.json())
@@ -162,18 +162,17 @@ export class ApiService {
       }))
   }
 
-  getCountries(){
+  getCountries() {
     return this.http.get('https://restcountries.eu/rest/v2/all')
       .map((res: Response) => res.json())
-      .catch((error:any) => Observable.throw(console.log(error) || 'Server error'))
+      .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }
 
-  updateProfileInfo(body: Object, token: Object){
-    let bodyString = JSON.stringify(body);
-    let headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
-    headers.append('Authorization',  token.toString());
-    let options = new RequestOptions({ headers: headers})
-  
+  updateProfileInfo(body: Object, token: Object) {
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({ 'Content-type': 'application/json' });  // ... Set content type to JSON
+    headers.append('Authorization', token.toString());
+    const options = new RequestOptions({ headers: headers })
 
     return this.http.patch(this.apiUrl + '/api/update_user', body, options)
       .map((res: Response) => res.json())

@@ -1,4 +1,4 @@
-import { ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component'
 
-export const router: Routes = [
+const router: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full'},
   { path: 'profile', redirectTo: 'profile/show', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
@@ -27,4 +27,11 @@ export const router: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
 ]
 
-export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(router);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(router)
+  ],
+  exports:  [RouterModule]
+
+})
+export class AppRoutes {}
