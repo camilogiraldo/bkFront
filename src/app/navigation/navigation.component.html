@@ -14,15 +14,14 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed">
                     <ul class="nav navbar-nav" (click)="isCollapsed = !isCollapsed">
-                        <li class="active"><a routerLink="/" routerLinkActive="active" class="" >Home</a></li>
-                        <li *ngIf="loggedIn" class=""><a routerLink="/create" routerLinkActive="active" class="" >Create</a></li>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/products">Home</a></li>
+                        <li *ngIf="loggedIn" routerLinkActive="active"><a routerLink="/create" routerLinkActive="active" class="" >Create</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right" (click)="isCollapsed = !isCollapsed">
-                        <li *ngIf="!loggedIn"><a routerLink="/login" class="alc" >Login</a></li>
-                        <li *ngIf="!loggedIn"><a routerLink="/signup" class="alc">Signup</a></li>
-                        <li *ngIf="loggedIn"><a routerLink="/profile/show" class="alc"><i class="fa fa-user-o" aria-hidden="true"></i>  My profile</a></li>
-
-                        <li *ngIf="loggedIn" class=""><a routerLink="/cart" class="alc">( {{ newUser.itemsInCart.length }} ) <i class="fa fa-shopping-cart" aria-hidden="true"></i>  Cart</a></li>
+                        <li *ngIf="!loggedIn" routerLinkActive="active" ><a routerLink="/login" class="alc" >Login</a></li>
+                        <li *ngIf="!loggedIn" routerLinkActive="active"><a routerLink="/signup" class="alc">Signup</a></li>
+                        <li *ngIf="loggedIn" routerLinkActive="active"><a routerLink="/profile/show" class="alc"><i class="fa fa-user-o" aria-hidden="true"></i>  My profile</a></li>
+                        <li *ngIf="loggedIn" class="" routerLinkActive="active"><a routerLink="/cart" class="alc">( {{ newUser.itemsInCart.length }} ) <i class="fa fa-shopping-cart" aria-hidden="true"></i>  Cart</a></li>
                         <li *ngIf="loggedIn" class=""><a href="" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout</a></li>
                     </ul>
                 </div>
