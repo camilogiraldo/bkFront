@@ -5,7 +5,9 @@
   "scripts": {
     "heroku-prebuild": "npm install -g http-server",
     "heroku-postbuild": "ng build",
-    "start": "http-server dist/"
+    "start": "http-server dist/",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -33,7 +35,8 @@
     "style-loader": "^0.18.2",
     "ts-node": "~3.2.0",
     "typescript": "^2.3.2",
-    "zone.js": "^0.8.10"
+    "zone.js": "^0.8.10",
+    "snyk": "^1.53.0"
   },
   "devDependencies": {
     "@angular/cli": "^1.0.3",
@@ -53,5 +56,6 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.5.0",
     "typescript": "^2.3.2"
-  }
+  },
+  "snyk": true
 }
