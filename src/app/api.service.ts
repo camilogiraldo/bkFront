@@ -14,8 +14,8 @@ export class ApiService {
 
   loggedIn: Boolean;
   private currentUser: { exp };
-  private apiUrl = 'https://stage-bkbackend.herokuapp.com';
-  // private apiUrl = 'http://localhost:3000'
+  // private apiUrl = 'https://stage-bkbackend.herokuapp.com';
+  private apiUrl = 'http://localhost:3000'
   jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(private http: Http) { }
@@ -146,7 +146,7 @@ export class ApiService {
     headers.delete('Content-type')
     const options = new RequestOptions({ headers: headers })
 
-    return this.http.post(this.apiUrl + '/create', body, options)
+    return this.http.post(this.apiUrl + '/products/create', body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(console.log(error) || 'Server error'))
   }

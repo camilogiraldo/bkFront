@@ -17,26 +17,25 @@ export class CartComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-        this.sessionToken = this.api.getSessionToken();
-        this.getCart();
-        this.newUser = this.api.getSessionData();
+    this.sessionToken = this.api.getSessionToken();
+    this.getCart();
+    this.newUser = this.api.getSessionData();
   }
 
-  getCart(){
-    this.api.getItemsInCart(this.sessionToken).subscribe( data => {
-        this.products = data;
-        this.products.length > 0 ? this.noItemsInCart = false : this.noItemsInCart = true
-        data.forEach(e =>
-          {
-            this.totalAmount += (e.price * e.count);
-          })
+  getCart() {
+    this.api.getItemsInCart(this.sessionToken).subscribe(data => {
+      this.products = data;
+      this.products.length > 0 ? this.noItemsInCart = false : this.noItemsInCart = true
+      data.forEach(e => {
+        this.totalAmount += (e.price * e.count);
+      })
 
     }, err => {
 
     })
   }
 
-  deleteFromCart(product){
+  deleteFromCart(product) {
     this.api.deleteProductFromCart(product, this.sessionToken).subscribe(data => {
 
       this.totalAmount = 0;
@@ -44,15 +43,14 @@ export class CartComponent implements OnInit {
       this.newToken = data.token;
 
       localStorage.removeItem('currentUser');
-        //Updates userToken with cart updated
+      //Updates userToken with cart updated
       localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
       this.newUser = this.api.getSessionData();
       console.log(this.products.length);
-      if(this.products.length > 0){
+      if (this.products.length > 0) {
         this.noItemsInCart = false;
-        this.products.forEach(e =>
-        {
-            this.totalAmount +=  (e.price * e.count);
+        this.products.forEach(e => {
+          this.totalAmount += (e.price * e.count);
         })
       } else {
         this.noItemsInCart = true;
