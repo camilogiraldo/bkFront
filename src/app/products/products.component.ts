@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { User } from '../model/user'
-import { MdCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { NavigationComponent } from '../navigation/navigation.component'
 
 

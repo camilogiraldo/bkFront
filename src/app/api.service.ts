@@ -140,6 +140,7 @@ export class ApiService {
   }
 
   createProduct(body: Object) {
+    console.log(body)
     const token = this.getSessionToken();
     const headers = new Headers({})
     headers.append('Authorization', token.toString());

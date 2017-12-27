@@ -1,7 +1,7 @@
 import { Component, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
-import {MdCardModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
 
 @Component({
   selector: 'app-product-detail',
