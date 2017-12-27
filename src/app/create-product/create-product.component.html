@@ -18,20 +18,40 @@
 
       </dl>
       <hr class="colorgraph">
-      <form role="form" (ngSubmit)="publish()" id='myForm'>
+      <form  (ngSubmit)="publish()" [formGroup]="productForm">
         <div class="form-group">
-          <input [(ngModel)]="product.name" type="text" name="product_name" id="product_name" class="form-control input-lg" placeholder="Product Name"
-            tabindex="1" required="">
+          <input 
+            type="text" 
+            name="product_name" 
+            id="product_name" 
+            class="form-control input-lg" 
+            placeholder="Product Name"
+            tabindex="1" 
+            formControlName="productName"
+          />
         </div>
         <div class="form-group">
           <label for="comment">Product description:</label>
-          <textarea [(ngModel)]="product.description" name="product_description" id="product_description" class="form-control" tabindex="2"
-            rows="5" placeholder="Product Description..." required=""></textarea>
+          <textarea  
+            name="product_description" 
+            id="product_description" 
+            class="form-control" 
+            tabindex="2"
+            rows="5" 
+            placeholder="Product Description..." 
+            required=""
+            formControlName="productDescription"></textarea>
         </div>
 
         <div class="form-group">
           <label for="exampleSelect1">Product type</label>
-          <select (change)="onChangeType($event.target.value)" class="form-control" id="exampleSelect1" tabindex="3">
+          <!-- (change)="onChangeType($event.target.value)"  -->
+          <select 
+            class="form-control" 
+            id="exampleSelect1" 
+            tabindex="3"
+            formControlName="productType"
+          >
             <option>Type 1</option>
             <option>Type 2</option>
             <option>Type 3</option>
@@ -43,16 +63,32 @@
           <legend>Product status</legend>
           <div class="form-check">
             <label class="form-check-label">
-              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="new"
-                checked="" tabindex="5"> New
-              <input [(ngModel)]="product.status" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="used"
-                tabindex="6"> Used
+              <input 
+                type="radio" 
+                class="form-check-input" 
+                name="productStatus" 
+                value="new"
+                checked="" 
+                tabindex="5"
+                formControlName="productStatus"> New
+              <input 
+                type="radio" 
+                class="form-check-input" 
+                name="productStatus" 
+                value="used"
+                tabindex="6"
+                formControlName="productStatus"> Used
             </label>
           </div>
         </fieldset>
         <div class="form-group">
-          <input [(ngModel)]="product.price" type="number" name="product_price" id="product_price" class="form-control input-md col-md-4"
-            placeholder="Price" tabindex="7" required>
+          <input 
+          type="number" name="product_price" 
+          id="product_price" 
+          class="form-control input-md col-md-4"
+            placeholder="Price" 
+            tabindex="7" 
+            formControlName="productPrice">
         </div>
         <br>
         <br>
@@ -60,7 +96,13 @@
           <label for="exampleInputFile">
             Images
           </label>
-          <input id="photo" type="file" accept="image/*" required="" tabindex="8" />
+          <input 
+          id="photo" 
+          type="file" 
+          accept="image/*" 
+          (change)="onFileChange($event)" 
+          tabindex="8"
+          formControlName="productImages" />
           <br>
           <p class="help-block">
             Be sure to provide appropiate photos for your product.

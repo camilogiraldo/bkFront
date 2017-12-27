@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -43,7 +43,8 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     HttpModule,
     AppRoutes,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [ ApiService, AuthGuard ],
   bootstrap: [ AppComponent ]
