@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
           .subscribe((id) => {
             this.api.getProductByID(this.id)
               .subscribe(data => {
-                this.product = data
+                this.product = data;
               })
           });
   }
@@ -41,12 +41,10 @@ export class ProductDetailComponent implements OnInit {
   addToCart(product_id){
     this.api.addProductToCart(product_id, this.sessionToken).subscribe(data => {
         this.response = data;
-        console.log(this.response)
         this.newToken = data.token;
         localStorage.removeItem('currentUser')
         //Updates userToken with cart updated
         localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
-        console.log(this.response)
         this.newUser = this.api.getSessionData()
     }, err => {
 

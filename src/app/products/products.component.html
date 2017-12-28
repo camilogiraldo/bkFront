@@ -22,7 +22,7 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <img src="{{product.images}}" alt="" [routerLink]="['/products/', product._id]" routerLinkActive="active" class="img-responsive">
+    <img src="data:{{product.images.filetype}};base64,{{product.images.value}}" alt="" [routerLink]="['/products/', product._id]" routerLinkActive="active" class="img-responsive">
     <mat-card-content>
       <p>
         {{ product.description | uppercase }}

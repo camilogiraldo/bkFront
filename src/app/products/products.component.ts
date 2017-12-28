@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.api.getProducts().subscribe(data => {
       this.loading = false;
-      this.products = data
+      this.products = data;
     }, err => {
       this.loading = false;
       this.message = JSON.stringify(err),
@@ -60,8 +60,6 @@ export class ProductsComponent implements OnInit {
       localStorage.removeItem('currentUser')
       // Updates userToken with cart updated
       localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
-      console.log(this.response)
-
       this.newUser = this.api.getSessionData()
 
 

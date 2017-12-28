@@ -8,12 +8,11 @@
   <br>
   <br>
 
-  <md-card class="col-md-6 col-md-offset-1" *ngFor="let product of products">
+  <mat-card class="col-md-6 col-md-offset-1" *ngFor="let product of products">
     <!-- <div class="col-md-6 col-md-offset-4" > -->
     <div class="col-md-8">
-
       <h3> {{ product.name  | uppercase}} </h3>
-      <img src="{{product.images}}" alt="" class="img-thumbnail small">
+      <img src="data:{{product.images.filetype}};base64,{{product.images.value}}" alt="" class="img-thumbnail small">
       <br />
     </div>
     <div class="col-md-4">
@@ -27,19 +26,19 @@
       <span>Price: <strong> <i class="fa fa-usd" aria-hidden="true"></i> {{ product.price }} /each</strong></span>
       <br/>
       <span><strong>Units in cart: </strong><input value="{{ product.count }}"/></span>
-      <md-card-actions>
+      <mat-card-actions>
         <button type="submit" class="btn btn-danger" (click)="deleteFromCart(product._id)">DELETE FROM CART </button>
-      </md-card-actions>
+      </mat-card-actions>
 
     </div>
-  </md-card>
+  </mat-card>
 <div class="col-md-12 col-sm-offset-6 checkoutButton">
-  <md-card class="col-md-3 col-sm-offset-1 checkout">
+  <mat-card class="col-md-3 col-sm-offset-1 checkout">
     <h3> TOTAL AMOUNT $ {{ totalAmount }} </h3>
-    <md-card-actions>
+    <mat-card-actions>
       <button *ngIf="!isLogged" type="submit" (click)="loginAndBuy()" class="btn btn-success centerButton">PROCEED TO CHECKOUT <i class="fa fa-dollar" aria-hidden="true"></i> </button>
-    </md-card-actions>
-  </md-card>
+    </mat-card-actions>
+  </mat-card>
 </div>
 <div *ngIf="noItemsInCart" >
   <div class="col-md-5 col-md-offset-3">

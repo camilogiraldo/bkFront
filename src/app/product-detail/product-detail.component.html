@@ -5,8 +5,8 @@
 <br>
 <div class="container-fluid">
   <mat-card class="col-md-6 col-md-offset-3" >
-      <h3> {{ product.name  | uppercase}} </h3>
-      <img src="{{product.images}}" alt="" class="img-responsive">
+      <h3> {{ product.name  | uppercase }} </h3>
+      <img src="data:{{product.images.filetype}};base64,{{product.images.value}}" alt="" class="img-responsive">
       <br />
       <h5><strong> Created by: </strong> {{ product.createdBy }} at {{ product.createdAt }}</h5>
       <p>{{ product.description }}</p>

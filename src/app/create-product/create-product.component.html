@@ -77,18 +77,19 @@
                 name="productStatus" 
                 value="used"
                 tabindex="6"
-                formControlName="productStatus"> Used
+                formControlName="productStatus" /> Used
             </label>
           </div>
         </fieldset>
         <div class="form-group">
           <input 
-          type="number" name="product_price" 
-          id="product_price" 
-          class="form-control input-md col-md-4"
+            type="number" 
+            name="productPrice" 
+            id="productPrice" 
+            class="form-control input-md col-md-4"
             placeholder="Price" 
             tabindex="7" 
-            formControlName="productPrice">
+            formControlName="productPrice" />
         </div>
         <br>
         <br>
@@ -97,12 +98,12 @@
             Images
           </label>
           <input 
-          id="photo" 
           type="file" 
           accept="image/*" 
           (change)="onFileChange($event)" 
           tabindex="8"
-          formControlName="productImages" />
+          
+          />
           <br>
           <p class="help-block">
             Be sure to provide appropiate photos for your product.
@@ -113,7 +114,7 @@
           </ul>
         </div>
         <hr class="colorgraph">
-        <button type="submit" class="btn btn-success col-md-12" tabindex="9">
+        <button type="submit" class="btn btn-success col-md-12" [disabled]='!productForm.valid'tabindex="9">
           Publish
         </button>
       </form>

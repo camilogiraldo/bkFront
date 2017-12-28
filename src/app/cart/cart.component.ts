@@ -46,7 +46,6 @@ export class CartComponent implements OnInit {
       //Updates userToken with cart updated
       localStorage.setItem('currentUser', JSON.stringify({ token: this.newToken }));
       this.newUser = this.api.getSessionData();
-      console.log(this.products.length);
       if (this.products.length > 0) {
         this.noItemsInCart = false;
         this.products.forEach(e => {
