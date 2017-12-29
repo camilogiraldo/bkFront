@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, Input } from "@angular/core";
 import { ApiService } from "../api.service";
 import { Router } from "@angular/router";
-import { Http, Response } from "@angular/http";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
@@ -28,7 +27,6 @@ export class CreateProductComponent implements OnInit {
   constructor(
     private api: ApiService,
     private router: Router,
-    private http: Http,
     private el: ElementRef
   ) {}
 

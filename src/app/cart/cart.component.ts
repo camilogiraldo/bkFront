@@ -25,13 +25,13 @@ export class CartComponent implements OnInit {
   getCart() {
     this.api.getItemsInCart(this.sessionToken).subscribe(data => {
       this.products = data;
+      console.log(this.products)
       this.products.length > 0 ? this.noItemsInCart = false : this.noItemsInCart = true
       data.forEach(e => {
         this.totalAmount += (e.price * e.count);
       })
-
     }, err => {
-
+      console.log(err)
     })
   }
 
