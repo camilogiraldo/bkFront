@@ -20,8 +20,8 @@ jobs:
           name: angular-build
           command: yarn ng build 
       - run:
-          name: Firebase project
-           command: |
+          name: Deploy app to firebase
+          command: |
             ./node_modules/.bin/firebase use stage-bkfront
       - run:
           name: Deploy app to firebase
