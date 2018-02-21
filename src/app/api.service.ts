@@ -18,8 +18,8 @@ import { JwtHelper } from 'angular2-jwt';
 export class ApiService {
   loggedIn: Boolean;
   private currentUser: { exp };
-  // private apiUrl = 'https://stage-bkbackend.herokuapp.com';
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'https://stage-bkbackend.herokuapp.com';
+  //private apiUrl = 'http://localhost:3000';
   jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(private http: HttpClient) {}
