@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Deploy app to firebase
           command: |
-            ./node_modules/.bin/firebase use stage-bkfront
+            ./node_modules/.bin/firebase use stage-bkfront --token=$FIREBASE_DEPLOY_TOKEN
       - run:
           name: Deploy app to firebase
           command: |
