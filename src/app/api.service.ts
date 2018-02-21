@@ -61,10 +61,9 @@ export class ApiService {
   getProducts() {
     return this.http
       .get(this.apiUrl + '/products')
-      .catch(res => {
-        // The error callback (second parameter) is called
-        return Observable.throw(res.json());
-      });
+      .catch((error: any) =>
+        Observable.throw(console.log(error) || 'Server error')
+      );
   }
 
   getProductByID(id: String) {
@@ -140,10 +139,9 @@ export class ApiService {
     const headers = new HttpHeaders().set('Content-type', 'application/json');
     return this.http
       .post(this.apiUrl + '/api/authenticate', bodyString, {headers})
-      .catch(res => {
-        // The error callback (second parameter) is called
-        return Observable.throw(res.json());
-      });
+      .catch((error: any) =>
+        Observable.throw(console.log(error) || 'Server error')
+      );
   }
 
   createProduct(body: FormData) {
@@ -161,10 +159,9 @@ export class ApiService {
   verifyEmail(params: String) {
     return this.http
       .get(this.apiUrl + '/api/verify_email?token=' + params.toString())
-      .catch(res => {
-        // The error callback (second parameter) is called
-        return Observable.throw(res.json());
-      });
+      .catch((error: any) =>
+      Observable.throw(console.log(error) || 'Server error')
+    );
   }
 
   getCountries() {
@@ -183,9 +180,8 @@ export class ApiService {
 
     return this.http
       .patch(this.apiUrl + '/api/update_user', body, {headers})
-      .catch(res => {
-        // The error callback (second parameter) is called
-        return Observable.throw(res.json());
-      });
+      .catch((error: any) =>
+        Observable.throw(console.log(error) || 'Server error')
+      );
   }
 }
