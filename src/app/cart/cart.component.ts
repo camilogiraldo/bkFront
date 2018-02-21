@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
 
   deleteFromCart(product) {
     this.api.deleteProductFromCart(product, this.sessionToken).subscribe(data => {
-
+      console.log(data)
       this.totalAmount = 0;
       this.products = data.cart;
       this.newToken = data.token;
