@@ -19,9 +19,6 @@ jobs:
       - run:
           name: angular-build
           command: yarn ng build 
-      - store_artifacts:
-          path: tslint.xml
-          prefix: lint
     deployment:
       production:
         branch: stage
