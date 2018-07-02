@@ -1,8 +1,11 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.8.0
+version: v1.12.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:moment:20170905':
     - ng2-bootstrap > moment:
         patched: '2017-12-04T01:12:46.320Z'
+  'npm:tunnel-agent:20170305':
+    - '@angular/cli > node-sass > request > tunnel-agent':
+        patched: '2018-07-02T06:37:17.873Z'
