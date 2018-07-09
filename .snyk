@@ -1,8 +1,13 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.8.0
+version: v1.12.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:moment:20170905':
     - ng2-bootstrap > moment:
         patched: '2017-12-04T01:12:46.320Z'
+  'npm:lodash:20180130':
+    - firebase-tools > superstatic > nash > lodash:
+        patched: '2018-07-09T06:41:26.652Z'
+    - firebase-tools > @google-cloud/functions-emulator > cli-table2 > lodash:
+        patched: '2018-07-09T06:41:26.652Z'
