@@ -5,7 +5,9 @@
   "scripts": {
     "heroku-prebuild": "npm install -g http-server",
     "heroku-postbuild": "ng build",
-    "start": "http-server dist/"
+    "start": "http-server dist/",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
