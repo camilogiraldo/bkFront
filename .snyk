@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.12.0
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -25,3 +25,86 @@ patch:
         patched: '2018-10-15T06:35:18.321Z'
     - firebase-tools > @google-cloud/functions-emulator > express > serve-static > send > mime:
         patched: '2018-10-15T06:35:18.321Z'
+  SNYK-JS-LODASH-567746:
+    - '@angular/cli > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - angular2-countrypicker > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > html-webpack-plugin > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > inquirer > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > webpack-merge > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > archiver > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > inquirer > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > superstatic > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - snyk > inquirer > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - snyk > snyk-resolve-deps > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > extract-text-webpack-plugin > async > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > sass-loader > async > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > webpack > async > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > google-auto-auth > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > archiver > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > node-sass > sass-graph > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > webpack-dev-server > http-proxy-middleware > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > grpc > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > archiver > archiver-utils > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > archiver > zip-stream > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > webpack > watchpack > async > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > @google-cloud/storage > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-types > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-generator > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-traverse > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > node-sass > gaze > globule > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > googleapis > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > archiver > zip-stream > archiver-utils > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - snyk > snyk-nuget-plugin > xml2js > xmlbuilder > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-generator > babel-types > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-traverse > babel-types > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > babel-types > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > babel-traverse > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > @google-cloud/storage > @google-cloud/common > google-auto-auth > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > @google-cloud/storage > gcs-resumable-upload > google-auto-auth > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - firebase-tools > @google-cloud/functions-emulator > @google-cloud/storage > @google-cloud/common > split-array-stream > async > lodash:
+        patched: '2020-05-04T02:11:47.765Z'
+    - '@angular/cli > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2020-05-04T02:11:47.765Z'
