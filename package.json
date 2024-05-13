@@ -13,10 +13,10 @@
   "dependencies": {
     "@angular/animations": "^5.1.2",
     "@angular/cdk": "^5.0.2",
-    "@angular/cli": "^1.0.3",
+    "@angular/cli": "^6.0.0",
     "@angular/common": "^5.1.2",
     "@angular/compiler": "^5.1.2",
-    "@angular/compiler-cli": "^5.1.2",
+    "@angular/compiler-cli": "^9.0.0",
     "@angular/core": "^5.1.2",
     "@angular/forms": "^5.1.2",
     "@angular/http": "^5.1.2",
@@ -41,8 +41,8 @@
     "zone.js": "^0.8.10"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.3",
-    "@angular/compiler-cli": "^5.1.2",
+    "@angular/cli": "^6.0.0",
+    "@angular/compiler-cli": "^9.0.0",
     "@types/jasmine": "2.8.6",
     "@types/node": "~9.4.6",
     "codelyzer": "~4.1.0",
